@@ -4,16 +4,18 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Sebagomez.TwitterLib</AssemblyName>
     <RootNamespace>Sebagomez.TwitterLib</RootNamespace>
+    <ApplicationIcon />
+    <Authors>@sebagomez</Authors>
+    <Description>Complete Twitter Library for the .NET platform (standard 2.0)</Description>
+    <Copyright>Copyright 2019 @SebaGomez</Copyright>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/sebagomez/twitterlib</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>twitter</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Sebagomez.BitLyHelper" Version="1.1.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="twit.data">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>
