@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Sebagomez.TwitterLib</AssemblyName>
+    <RootNamespace>Sebagomez.TwitterLib</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Sebagomez.BitLyHelper" Version="1.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="twit.data">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
