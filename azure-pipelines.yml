@@ -13,5 +13,12 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- script: dotnet build --configuration $(buildConfiguration)
+- script: dotnet build --configuration $(buildConfiguration) ./src/TwitterLib.csproj
   displayName: 'dotnet build $(buildConfiguration)'
+# need to run tests here
+- script: dotnet pack --no-build --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory) ./src/TwitterLib.csproj
+  displayName: 'NuGet pack'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    ArtifactName: 'nuget'
