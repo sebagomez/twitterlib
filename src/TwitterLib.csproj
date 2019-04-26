@@ -12,6 +12,8 @@
     <PackageProjectUrl>https://github.com/sebagomez/twitterlib</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>twitter</PackageTags>
+    <PackageIconUrl>https://raw.githubusercontent.com/sebagomez/twitterlib/master/src/twit.ico</PackageIconUrl>
+    <RepositoryUrl>https://github.com/sebagomez/twitterlib</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
