@@ -1,7 +1,8 @@
+[![Build Status](https://dev.azure.com/sebagomez/twitterlib/_apis/build/status/sebagomez.twitterlib?branchName=master)](https://dev.azure.com/sebagomez/twitterlib/_build/latest?definitionId=12&branchName=master)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/Sebagomez.TwitterLib.svg?label=NuGet%20downloads)](https://www.nuget.org/packages/Sebagomez.TwitterLib/)
 
 # twitterlib
-TwitterLib is a simple yet powerfull .NET standard SDK for the twitter API. It was originally created for [shelltwit](https://github.com/sebagomez/shelltwit) but now you can get it for your own twitter client via NuGet.
+TwitterLib is a simple yet powerfull .NET standard SDK for the twitter API. It was originally created for [shelltwit](https://github.com/sebagomez/shelltwit) but now you can get it for your own twitter client via [NuGet](https://www.nuget.org/packages/Sebagomez.TwitterLib/).
 
 ## Implemented Twitter APIs
 
