@@ -8,8 +8,8 @@ namespace Sebagomez.TwitterLib.Helpers
 	{
 		static string s_settingsFile = "twit.data";
 
-		public static string TWIT_KEY = "TWIT_KEY";
-		public static string TWIT_SECRET = "TWIT_SECRET";
+		static string TWIT_KEY = "TWIT_KEY";
+		static string TWIT_SECRET = "TWIT_SECRET";
 
 		static Settings s_instance;
 

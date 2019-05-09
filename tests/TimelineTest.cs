@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
 using Sebagomez.TwitterLib.API.Options;
 using Sebagomez.TwitterLib.API.Tweets;
 using Sebagomez.TwitterLib.Helpers;
@@ -16,7 +15,7 @@ namespace TwitterLibTests
 		{
 			try
 			{
-				List<Sebagomez.TwitterLib.Entities.Status> ss = await Timeline.GetTimeline(new TimelineOptions { User = m_user });
+				List<Sebagomez.TwitterLib.Entities.Status> ss = await Timeline.GetTimeline(new TimelineOptions { User = m_user, Application = m_app });
 				Assert.True(ss.Count > 0, "Ningún tweet!");
 			}
 			catch (Exception ex)
@@ -30,7 +29,7 @@ namespace TwitterLibTests
 		{
 			try
 			{
-				UserTimelineOptions options = new UserTimelineOptions { ScreenName = "sebagomez", ExcludeReplies = true, IncludeRTs = false, User = m_user };
+				UserTimelineOptions options = new UserTimelineOptions { ScreenName = "sebagomez", ExcludeReplies = true, IncludeRTs = false, User = m_user, Application = m_app };
 				List<Sebagomez.TwitterLib.Entities.Status> ss = await UserTimeline.GetUserTimeline(options);
 				Assert.True(ss.Count > 0, "Ningún tweet!");
 			}
@@ -46,7 +45,7 @@ namespace TwitterLibTests
 			try
 			{
 				int count = 200;
-				UserTimelineOptions options = new UserTimelineOptions { ScreenName = "sebagomez", Count = count, User = m_user };
+				UserTimelineOptions options = new UserTimelineOptions { ScreenName = "sebagomez", Count = count, User = m_user, Application = m_app };
 				List<Sebagomez.TwitterLib.Entities.Status> ss = await UserTimeline.GetUserTimeline(options);
 				Assert.True(ss.Count > 0, "Ningún tweet!");
 				Assert.True(ss.Count <= count, $"No trajo {count}?");

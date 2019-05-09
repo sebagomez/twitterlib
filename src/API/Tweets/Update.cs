@@ -29,6 +29,8 @@ namespace Sebagomez.TwitterLib.API.Tweets
 		{
 			try
 			{
+				CheckData(options);
+
 				if ((!string.IsNullOrEmpty(options.BitLyKey)) && (!string.IsNullOrEmpty(options.BitLyLogin)))
 				{
 					try
@@ -52,8 +54,8 @@ namespace Sebagomez.TwitterLib.API.Tweets
 				if (options.MediaFiles.Count > 4) //limited by the twitter API
 					throw new ArgumentOutOfRangeException("media", "Up to 4 media files are allowed per tweet");
 
-				if (options.User == null)
-					options.User = AuthenticatedUser.CurrentUser;
+				//if (options.User == null)
+				//	options.User = AuthenticatedUser.CurrentUser;
 				if (string.IsNullOrEmpty(options.OriginalSatatus))
 					options.OriginalSatatus = options.Status;
 

@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
 using Sebagomez.TwitterLib.API.Options;
 using Sebagomez.TwitterLib.API.Tweets;
 using Sebagomez.TwitterLib.Helpers;
@@ -17,7 +16,7 @@ namespace TwitterLibTests
 		{
 			try
 			{
-				LikesOptions options = new LikesOptions { ScreenName = "sebagomez", User = m_user };
+				LikesOptions options = new LikesOptions { ScreenName = "sebagomez", User = m_user, Application = m_app };
 				List<Sebagomez.TwitterLib.Entities.Status> ss = await Likes.GetUserLikes(options);
 				Assert.True(ss.Count > 0, "Ningún tweet!");
 			}

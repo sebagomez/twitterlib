@@ -25,12 +25,11 @@ namespace Sebagomez.TwitterLib.API.Tweets
 
 		public IEnumerable<Status> GetStreamingStatus(StreamingOptions options)
 		{
-			if (options.User == null)
-				options.User = AuthenticatedUser.CurrentUser;
+			CheckData(options);
 
 			if (!string.IsNullOrWhiteSpace(options.Follow) && !long.TryParse(options.Follow, out long id))
 			{
-				User data = Task.Run( () => UserData.GetUser(new UserShowOptions { User = options.User, ScreenName = options.Follow })).Result;
+				User data = Task.Run( () => UserData.GetUser(new UserShowOptions { User = options.User, Application = options.Application, ScreenName = options.Follow })).Result;
 				options.Follow = data.id_str;
 			}
 

@@ -1,17 +1,21 @@
 .svn/
 .vs/
 .vscode/
+
 [Bb]in/
 [Oo]bj/
 [Pp]ackages/
+TestResults/
+
 *.testsettings
 *.suo
 *.user
 *.usr
 *.tar.gz
 
-SecureData.txt
-SecretBaseTests.cs
+launchSettings.json
+#SecureData.txt
+#SecretBaseTests.cs
 twit.data
 
 *.usr

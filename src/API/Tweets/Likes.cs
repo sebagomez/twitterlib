@@ -14,8 +14,7 @@ namespace Sebagomez.TwitterLib.API.Tweets
 
 		public static async Task<List<Status>> GetUserLikes(LikesOptions options)
 		{
-			if (options.User == null)
-				options.User = AuthenticatedUser.CurrentUser;
+			CheckData(options);
 
 			HttpRequestMessage reqMsg = OAuthHelper.GetRequest(HttpMethod.Get, USER_LIKES, options);
 

@@ -14,8 +14,7 @@ namespace Sebagomez.TwitterLib.API.Tweets
 
 		public static async Task<List<Status>> GetMentions(MentionsOptions options)
 		{
-			if (options.User == null)
-				options.User = AuthenticatedUser.CurrentUser;
+			CheckData(options);
 
 			HttpRequestMessage reqMsg = OAuthHelper.GetRequest(HttpMethod.Get, MENTIONS_STATUS, options);
 

@@ -1,0 +1,11 @@
+# Top-most EditorConfig file
+root = true
+
+# https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-code-style-settings-reference?view=vs-2019#formatting-conventions
+
+[*.cs]
+indent_style = tab
+indent_size = 4
+
+dotnet_sort_system_directives_first = true
+dotnet_separate_import_directive_groups = false

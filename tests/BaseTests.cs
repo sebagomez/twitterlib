@@ -1,10 +1,7 @@
 ﻿using System;
 using System.IO;
-using System.Threading;
-
 using Sebagomez.TwitterLib.Helpers;
 using Xunit.Abstractions;
-using Xunit;
 
 namespace TwitterLibTests
 {
@@ -17,6 +14,7 @@ namespace TwitterLibTests
 		internal const string HUGE_MEDIA = "BiggerThan5MB.jpg";
 
 		protected AuthenticatedUser m_user;
+		protected AppCredentials m_app;
 
 		protected AuthenticatedUser LoadTestUser(string userhandle)
 		{
@@ -27,14 +25,10 @@ namespace TwitterLibTests
 		string m_resourcesDir;
 		protected string ResourcesDirectory => m_resourcesDir ?? (m_resourcesDir = Path.Combine(AppContext.BaseDirectory, RESOURCES_FOLDER));
 
-		//Implement this method setting environment variables with your Twitter API Key (TWIT_KEY) and Secret (TWIT_SECRET)
-		partial void SetTwitterKeys();
-
 		public BaseTests()
 		{
+			m_app = AppCredentials.Initialize(Credentials.Current.SHELLTWIT_KEY, Credentials.Current.SHELLTWIT_SECRET);
 			m_user = LoadTestUser("sebatestapi");
-
-			SetTwitterKeys();
 		}
 
 		private readonly ITestOutputHelper output;

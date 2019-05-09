@@ -8,13 +8,13 @@
     <Authors>@sebagomez</Authors>
     <Description>Complete Twitter Library for the .NET platform (standard 2.0)</Description>
     <Copyright>Copyright 2019 @SebaGomez</Copyright>
-    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/sebagomez/twitterlib</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>twitter</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/sebagomez/twitterlib/master/src/twit.ico</PackageIconUrl>
     <RepositoryUrl>https://github.com/sebagomez/twitterlib</RepositoryUrl>
-    <Version>1.0.0.1</Version>
+    <Version>1.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

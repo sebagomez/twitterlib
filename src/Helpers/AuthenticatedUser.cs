@@ -54,28 +54,29 @@ namespace Sebagomez.TwitterLib.Helpers
 
 		static AuthenticatedUser LoadCredentials()
 		{
-			AuthenticatedUser twiUser = new AuthenticatedUser();
-			if (!File.Exists(s_configFile))
-			{
-				// <-- the Console should not be called from here!
-				string token = OAuthAuthenticator.GetOAuthToken().Result;
-				Console.WriteLine("Please open your favorite browser and go to this URL to authenticate with Twitter:");
-				Console.WriteLine($"https://api.twitter.com/oauth/authorize?oauth_token={token}");
-				Console.Write("Insert the pin here:");
+			return new AuthenticatedUser();
+			//AuthenticatedUser twiUser = new AuthenticatedUser();
+			//if (!File.Exists(s_configFile))
+			//{
+			//	// <-- the Console should not be called from here!
+			//	string token = authenticator.GetOAuthToken().Result;
+			//	Console.WriteLine("Please open your favorite browser and go to this URL to authenticate with Twitter:");
+			//	Console.WriteLine($"https://api.twitter.com/oauth/authorize?oauth_token={token}");
+			//	Console.Write("Insert the pin here:");
 
-				string pin = Console.ReadLine();
+			//	string pin = Console.ReadLine();
 
-				string accessToken = OAuthAuthenticator.GetPINToken(token, pin).Result;
-				twiUser.SerializeTokens(accessToken);
-				Console.WriteLine("Success!");
-				Console.WriteLine("");
-			}
-			else
-			{
-				twiUser = Deserialize();
-			}
+			//	string accessToken = authenticator.GetPINToken(token, pin).Result;
+			//	twiUser.SerializeTokens(accessToken);
+			//	Console.WriteLine("Success!");
+			//	Console.WriteLine("");
+			//}
+			//else
+			//{
+			//	twiUser = Deserialize();
+			//}
 
-			return twiUser;
+			//return twiUser;
 		}
 
 

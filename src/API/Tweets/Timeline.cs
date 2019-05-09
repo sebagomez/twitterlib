@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Sebagomez.TwitterLib.API.OAuth;
+﻿using Sebagomez.TwitterLib.API.OAuth;
 using Sebagomez.TwitterLib.API.Options;
 using Sebagomez.TwitterLib.Entities;
-using Sebagomez.TwitterLib.Helpers;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Sebagomez.TwitterLib.API.Tweets
 {
@@ -14,8 +13,7 @@ namespace Sebagomez.TwitterLib.API.Tweets
 
 		public static async Task<List<Status>> GetTimeline(TimelineOptions options)
 		{
-			if (options.User == null)
-				options.User = AuthenticatedUser.CurrentUser;
+			CheckData(options);
 
 			HttpRequestMessage reqMsg = OAuthHelper.GetRequest(HttpMethod.Get, HOME_TIMELINE, options);
 			

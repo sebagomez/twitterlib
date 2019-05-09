@@ -14,11 +14,10 @@ namespace Sebagomez.TwitterLib.API.Tweets
 
 		public static async Task<User> GetUser(UserShowOptions options)
 		{
+			CheckData(options);
+
 			if (string.IsNullOrEmpty(options.UserId) && string.IsNullOrEmpty(options.ScreenName))
 				throw new Exception("You mst set either a screen name or a user id");
-
-			if (options.User == null)
-				options.User = AuthenticatedUser.CurrentUser;
 
 			HttpRequestMessage reqMsg = OAuthHelper.GetRequest(HttpMethod.Get, SHOW_USER_URL, options);
 

@@ -16,6 +16,8 @@ namespace Sebagomez.TwitterLib.API.Tweets
 
 		public static async Task<SearchResult> SearchTweets(SearchOptions options)
 		{
+			CheckData(options);
+
 			if (string.IsNullOrEmpty(options.Query))
 				throw new ArgumentNullException("query","The text query cannot be null");
 
