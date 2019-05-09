@@ -1,13 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.572
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwitterLib", "src\TwitterLib.csproj", "{8CC876D0-D74E-4628-BE4C-EE07E3C6F60F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterLibTests", "tests\TwitterLibTests.csproj", "{4EAE92AC-BABB-4434-A3EA-AE060160DD3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwitterLibTests", "tests\TwitterLibTests.csproj", "{4EAE92AC-BABB-4434-A3EA-AE060160DD3D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{264EA0CF-D82E-4E5E-B641-E4E67940B12D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{626FD4B8-F4B6-4710-BA7C-947FD9CA7414}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

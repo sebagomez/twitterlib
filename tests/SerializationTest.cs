@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.Serialization.Json;
-
 using Sebagomez.TwitterLib.Entities;
 using Sebagomez.TwitterLib.Helpers;
 using Xunit;

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-
 using Sebagomez.TwitterLib.API.Options;
 using Sebagomez.TwitterLib.Entities;
 using Sebagomez.TwitterLib.Helpers;
