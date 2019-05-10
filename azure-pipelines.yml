@@ -17,8 +17,8 @@ steps:
 - script: dotnet build --configuration $(buildConfiguration) ./src/TwitterLib.csproj
   displayName: 'dotnet build $(buildConfiguration)'
 
-- script: dotnet build --configuration $(buildConfiguration) ./src/TwitterLib.csproj
-  displayName: 'dotnet build $(buildConfiguration)'
+- script: dotnet build --configuration $(buildConfiguration) ./tests/TwitterLibTests.csproj
+  displayName: 'dotnet build $(buildConfiguration) (TEST)'
 
 - task: DownloadSecureFile@1
   inputs:
