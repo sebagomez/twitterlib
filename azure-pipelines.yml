@@ -17,9 +17,6 @@ steps:
 - script: dotnet build --configuration $(buildConfiguration) ./src/TwitterLib.csproj
   displayName: 'dotnet build $(buildConfiguration)'
 
-- script: dotnet build --configuration $(buildConfiguration) ./tests/TwitterLibTests.csproj
-  displayName: 'dotnet build $(buildConfiguration) (TEST)'
-
 - task: DownloadSecureFile@1
   inputs:
     secureFile: $(secureFile)
@@ -28,9 +25,9 @@ steps:
   inputs:
     SourceFolder: '$(Agent.TempDirectory)'
     Contents: '$(secureFile)'
-    TargetFolder: './test/bin/$(buildConfiguration)/netcoreapp2.2/Resources'
+    TargetFolder: './tests/Resources'
 
-- script: dotnet test --no-build --configuration $(buildConfiguration) ./tests/TwitterLibTests.csproj
+- script: dotnet test --configuration $(buildConfiguration) ./tests/TwitterLibTests.csproj
   displayName: 'Run tests ($(buildConfiguration))'
   env:
     VAULT_URL: $(vaultUrl)
