@@ -6,11 +6,12 @@ TwitterLib is a simple yet powerfull .NET standard SDK for the twitter API. It w
 
 ## Implemented Twitter APIs
 
-- [Status Update](https://dev.twitter.com/rest/reference/post/statuses/update)
-- [Status Mentions](https://dev.twitter.com/rest/reference/get/statuses/mentions_timeline)
-- [Status Home Timeline](https://dev.twitter.com/rest/reference/get/statuses/home_timeline)
-- [Status User Timeline](https://dev.twitter.com/rest/reference/get/statuses/user_timeline)
-- [Search](https://dev.twitter.com/rest/public/search)
-- [Favorites List](https://dev.twitter.com/rest/reference/get/favorites/list)
-- [Streaming statuses](https://dev.twitter.com/streaming/reference/post/statuses/filter)
-- [Streaming user](https://dev.twitter.com/streaming/userstreams)
+- [Status Update](https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/post-statuses-update)  
+- [Media upload](https://developer.twitter.com/en/docs/media/upload-media/api-reference/post-media-upload)
+- [Status Mentions](https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-mentions_timeline)
+- [Status Home Timeline](https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-home_timeline)
+- [Status User Timeline](https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-user_timeline)
+- [Search](https://developer.twitter.com/en/docs/tweets/search/api-reference/get-search-tweets.html)
+- [Favorites List](https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-favorites-list)
+- [Streaming statuses](https://developer.twitter.com/en/docs/tweets/filter-realtime/api-reference/post-statuses-filter.html)
+- [Streaming user](https://developer.twitter.com/en/docs/tweets/filter-realtime/guides/basic-stream-parameters)
