@@ -11,11 +11,22 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  secureFile: 'sebatestapi.usr'
 
 steps:
 - script: dotnet build --configuration $(buildConfiguration) ./src/TwitterLib.csproj
   displayName: 'dotnet build $(buildConfiguration)'
-#don't run test untill there's a better way to include usr settings
+
+- task: DownloadSecureFile@1
+  inputs:
+    secureFile: $(secureFile)
+    
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Agent.TempDirectory)'
+    Contents: '$(secureFile)'
+    TargetFolder: './test/Resources'
+
 - script: dotnet test --configuration $(buildConfiguration) ./tests/TwitterLibTests.csproj
   displayName: 'Run tests ($(buildConfiguration))'
   env:
