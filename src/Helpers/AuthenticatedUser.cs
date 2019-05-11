@@ -6,21 +6,19 @@ using Sebagomez.TwitterLib.API.OAuth;
 
 namespace Sebagomez.TwitterLib.Helpers
 {
-	[DataContract]
 	public class AuthenticatedUser
 	{
+
 		const string USER_FILE = "twit.usr";
 		const string OAUTH_TOKEN = "oauth_token";
 		const string OAUTH_TOKEN_SECRET = "oauth_token_secret";
 
 		static string s_configFile = Path.Combine(Util.FilesLocation, USER_FILE);
 
-		[XmlAttribute]
-		[DataMember]
+		public AppCredentials AppSettings { get; set; }
+
 		public string OAuthToken { get; set; }
 
-		[XmlAttribute]
-		[DataMember]
 		public string OAuthTokenSecret { get; set; }
 
 		public AuthenticatedUser() { }
@@ -29,6 +27,15 @@ namespace Sebagomez.TwitterLib.Helpers
 		{
 			OAuthToken = token;
 			OAuthTokenSecret = tokensecret;
+		}
+
+		public bool IsOk()
+		{
+			return !string.IsNullOrEmpty(OAuthToken) &&
+					!string.IsNullOrEmpty(OAuthTokenSecret) &&
+					AppSettings != null &&
+					!string.IsNullOrEmpty(AppSettings.AppKey) &&
+					!string.IsNullOrEmpty(AppSettings.AppSecret);
 		}
 
 		public static AuthenticatedUser GetUserCrdentials(string username)
@@ -50,45 +57,6 @@ namespace Sebagomez.TwitterLib.Helpers
 			string userPath = Path.Combine(Util.FilesLocation, username);
 
 			Serialize(userPath);
-		}
-
-		static AuthenticatedUser LoadCredentials()
-		{
-			return new AuthenticatedUser();
-			//AuthenticatedUser twiUser = new AuthenticatedUser();
-			//if (!File.Exists(s_configFile))
-			//{
-			//	// <-- the Console should not be called from here!
-			//	string token = authenticator.GetOAuthToken().Result;
-			//	Console.WriteLine("Please open your favorite browser and go to this URL to authenticate with Twitter:");
-			//	Console.WriteLine($"https://api.twitter.com/oauth/authorize?oauth_token={token}");
-			//	Console.Write("Insert the pin here:");
-
-			//	string pin = Console.ReadLine();
-
-			//	string accessToken = authenticator.GetPINToken(token, pin).Result;
-			//	twiUser.SerializeTokens(accessToken);
-			//	Console.WriteLine("Success!");
-			//	Console.WriteLine("");
-			//}
-			//else
-			//{
-			//	twiUser = Deserialize();
-			//}
-
-			//return twiUser;
-		}
-
-
-		static AuthenticatedUser s_currentUser;
-		public static AuthenticatedUser CurrentUser
-		{
-			get
-			{
-				if (s_currentUser == null)
-					s_currentUser = LoadCredentials();
-				return s_currentUser;
-			}
 		}
 
 		public void SerializeTokens(string accessTokens)
@@ -125,21 +93,8 @@ namespace Sebagomez.TwitterLib.Helpers
 
 		static AuthenticatedUser Deserialize()
 		{
-			AuthenticatedUser twiUser = null;
-			try
-			{
-				using (FileStream file = File.Open(s_configFile, FileMode.Open))
-					twiUser = Util.Deserialize<AuthenticatedUser>(file);
-			}
-			catch (SerializationException)
-			{
-				XmlSerializer deserializer = new XmlSerializer(typeof(AuthenticatedUser));
-				using (StreamReader reader = File.OpenText(s_configFile))
-					twiUser = (AuthenticatedUser)deserializer.Deserialize(reader);
-
-				twiUser.Serialize();
-			}
-			return twiUser;
+			using (FileStream file = File.Open(s_configFile, FileMode.Open))
+				return Util.Deserialize<AuthenticatedUser>(file);
 		}
 
 		public static void ClearCredentials()

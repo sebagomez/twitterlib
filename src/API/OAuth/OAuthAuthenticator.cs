@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,18 +13,9 @@ namespace Sebagomez.TwitterLib.API.OAuth
 	{
 		const string ACCESS_TOKEN = "https://api.twitter.com/oauth/access_token";
 		const string REQUEST_TOKEN = "https://api.twitter.com/oauth/request_token";
-		//const string AUTHORIZE = "https://api.twitter.com/oauth/authorize";
-
-		//public void OnAuthenticationNeeded()
-		//{
-		//	if (string.IsNullOrEmpty(CONSUMER_KEY) || string.IsNullOrEmpty(CONSUMER_SECRET))
-		//		throw new Exception("Missing Twitter app credentials (Key and/or Secret)");
-		//}
 
 		public static async Task<string> GetOAuthToken(string appKey, string appSecret)
 		{
-			//OnAuthenticationNeeded();
-
 			string nonce = OAuthHelper.GetNonce();
 			string timestamp = Util.EncodeString(OAuthHelper.GetTimestamp());
 			string callback = "oob";
@@ -34,7 +24,7 @@ namespace Sebagomez.TwitterLib.API.OAuth
 
 			string signatureBase = OAuthHelper.SignatureBsseString(HttpMethod.Post.Method, REQUEST_TOKEN, dic);
 			string signature = SignBaseString(signatureBase, string.Empty, appSecret);
-			string authHeader = AuthorizationHeader(nonce, signature, timestamp, string.Empty, true, string.Empty, appSecret);
+			string authHeader = AuthorizationHeader(nonce, signature, timestamp, string.Empty, true, string.Empty, appKey);
 
 			HttpRequestMessage reqMsg = new HttpRequestMessage(HttpMethod.Post, REQUEST_TOKEN);
 
@@ -56,8 +46,6 @@ namespace Sebagomez.TwitterLib.API.OAuth
 
 		public static async Task<string> GetPINToken(string oAuthToken, string pin, string appKey, string appSecret)
 		{
-			//OnAuthenticationNeeded();
-
 			string nonce = OAuthHelper.GetNonce();
 			string timestamp = Util.EncodeString(OAuthHelper.GetTimestamp());
 
@@ -78,53 +66,6 @@ namespace Sebagomez.TwitterLib.API.OAuth
 			return await response.Content.ReadAsStringAsync();
 		}
 
-		public static async Task<string> GetAccessToken(string username, string password, string appKey, string appSecret)
-		{
-			//OnAuthenticationNeeded();
-
-			if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-				throw new Exception("Empty user and/or password");
-
-			string decodedUsr = Util.EncodeString(username);
-			string decodedPwd = Util.EncodeString(password);
-
-			HttpRequestMessage reqMsg = new HttpRequestMessage(HttpMethod.Post, ACCESS_TOKEN);
-
-			var postData = new List<KeyValuePair<string, string>>();
-			postData.Add(new KeyValuePair<string, string>("x_auth_mode", OAuthHelper.CLIENT_AUTH));
-			postData.Add(new KeyValuePair<string, string>("x_auth_password", password));
-			postData.Add(new KeyValuePair<string, string>("x_auth_username", username));
-
-			reqMsg.Content = new FormUrlEncodedContent(postData);
-			reqMsg.Content.Headers.ContentType = new MediaTypeHeaderValue(Constants.CONTENT_TYPE.X_WWW_FORM_URLENCODED);
-
-			string nonce = OAuthHelper.GetNonce();
-			string timestamp = Util.EncodeString(OAuthHelper.GetTimestamp());
-
-			Dictionary<string, string> parms = GetAccessTokenParms(nonce, timestamp, decodedUsr, decodedPwd, appKey);
-			string signatureBase = OAuthHelper.SignatureBsseString(HttpMethod.Post.Method, ACCESS_TOKEN, parms);
-			string signature = SignBaseString(signatureBase, string.Empty, appSecret);
-			string authHeader = AuthorizationHeader(nonce, signature, timestamp, string.Empty, string.Empty, appSecret);
-
-			reqMsg.Headers.Add(Constants.HEADERS.AUTHORIZATION, authHeader);
-
-			HttpResponseMessage response = await Util.Client.SendAsync(reqMsg);
-			if (!response.IsSuccessStatusCode)
-				throw new Exception(await response.Content.ReadAsStringAsync());
-
-			return await response.Content.ReadAsStringAsync();
-		}
-
-		private static Dictionary<string, string> GetAccessTokenParms(string nonce, string timestamp, string username, string password, string appKey)
-		{
-			Dictionary<string, string> dic = GetWebAccessTokenParms(nonce, timestamp, null, null, appKey);
-			dic.Add(OAuthHelper.X_AUTH_MODE, OAuthHelper.CLIENT_AUTH);
-			dic.Add(OAuthHelper.X_AUTH_PASSWORD, password);
-			dic.Add(OAuthHelper.X_AUTH_USERNAME, username);
-
-			return dic;
-		}
-
 		private static Dictionary<string, string> GetWebAccessTokenParms(string nonce, string timestamp, string callback, string verifier, string appKey)
 		{
 			Dictionary<string, string> dic = new Dictionary<string, string>();
@@ -141,15 +82,8 @@ namespace Sebagomez.TwitterLib.API.OAuth
 			return dic;
 		}
 
-		internal static string AuthorizationHeader(string nonce, string signature, string timestamp, string oAuthToken, string pin, string appKey)
-		{
-			return AuthorizationHeader(nonce, signature, timestamp, oAuthToken, false, pin, appKey);
-		}
-
 		internal static string AuthorizationHeader(string nonce, string signature, string timestamp, string oAuthToken, bool withCallback, string pin, string appKey)
 		{
-			//OnAuthenticationNeeded();
-
 			string token = string.Empty;
 			if (!string.IsNullOrEmpty(oAuthToken))
 				token = $"{OAuthHelper.OAUTH_TOKEN}=\"{Util.EncodeString(oAuthToken)}\", ";
@@ -163,19 +97,10 @@ namespace Sebagomez.TwitterLib.API.OAuth
 			return $"OAuth {callBack}oauth_nonce=\"{nonce}\", oauth_signature_method=\"{OAuthHelper.HMAC_SHA1}\", oauth_timestamp=\"{timestamp}\", oauth_consumer_key=\"{Util.EncodeString(appKey)}\", {token} oauth_signature=\"{Util.EncodeString(signature)}\", {pin}oauth_version=\"1.0\"";
 		}
 
-		private static string WebAuthorizationHeader(string nonce, string signature, string timestamp, string pin, string appKey)
-		{
-			//OnAuthenticationNeeded();
-
-			return $"OAuth oauth_nonce=\"{nonce}\", oauth_signature_method=\"{OAuthHelper.HMAC_SHA1}\", oauth_timestamp=\"{timestamp}\", oauth_consumer_key=\"{Util.EncodeString(appKey)}\", oauth_signature=\"{Util.EncodeString(signature)}\", oauth_verifier=\"{pin}\", oauth_version=\"1.0\"";
-		}
-
 		#region utils
 
 		public static string SignBaseString(string signatureBase, string oAuthSecret, string appSecret)
 		{
-			//OnAuthenticationNeeded();
-
 			HMACSHA1 hmacsha1 = new HMACSHA1();
 			hmacsha1.Key = Util.GetUTF8EncodingBytes(string.Format("{0}&{1}", Util.EncodeString(appSecret), string.IsNullOrEmpty(oAuthSecret) ? "" : Util.EncodeString(oAuthSecret)));
 

@@ -7,8 +7,8 @@ namespace TwitterLibTests
 {
 	public class AuthorizationTest : BaseTests
 	{
-		//[Fact]
-		public void GetWebAccessToken()
+		[Fact]
+		public void GetOAuthToken()
 		{
 			try
 			{

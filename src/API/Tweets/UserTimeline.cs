@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Sebagomez.TwitterLib.API.OAuth;
 using Sebagomez.TwitterLib.API.Options;
 using Sebagomez.TwitterLib.Entities;
-using Sebagomez.TwitterLib.Helpers;
 
 namespace Sebagomez.TwitterLib.API.Tweets
 {
@@ -14,8 +13,7 @@ namespace Sebagomez.TwitterLib.API.Tweets
 
 		public static async Task<List<Status>> GetUserTimeline(UserTimelineOptions options)
 		{
-			if (options.User == null)
-				options.User = AuthenticatedUser.CurrentUser;
+			CheckData(options);
 
 			HttpRequestMessage reqMsg = OAuthHelper.GetRequest(HttpMethod.Get, USER_TIMELINE, options);
 

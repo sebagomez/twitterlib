@@ -24,9 +24,6 @@ namespace Sebagomez.TwitterLib.API.Tweets
 			if (options.Query.Length > MAX_QUERY_LENGTH)
 				throw new IndexOutOfRangeException($"Query too long. The query string cannot exceed {MAX_QUERY_LENGTH} chars.");
 
-			if (options.User == null)
-				options.User = AuthenticatedUser.CurrentUser;
-
 			options.Query = Util.EncodeString(WebUtility.HtmlDecode(options.Query));
 
 			HttpRequestMessage reqMsg = OAuthHelper.GetRequest(HttpMethod.Get, SEARCH_URL, options);
