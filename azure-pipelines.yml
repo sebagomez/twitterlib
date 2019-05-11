@@ -17,7 +17,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  secureFile: 'sebatestapi.usr'
+  secureFile: 'sebatestapi.data'
 
 steps:
 - script: dotnet build --configuration $(buildConfiguration) ./src/TwitterLib.csproj

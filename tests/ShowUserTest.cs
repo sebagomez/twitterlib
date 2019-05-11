@@ -27,7 +27,7 @@ namespace TwitterLibTests
 		{
 			try
 			{
-				UserShowOptions options = new UserShowOptions { ScreenName = screenname, User = m_user, Application = m_app };
+				UserShowOptions options = new UserShowOptions { ScreenName = screenname, User = m_user };
 				User user = await Sebagomez.TwitterLib.API.Tweets.UserData.GetUser(options);
 				Assert.True(user.screen_name == screenname, "OK");
 			}

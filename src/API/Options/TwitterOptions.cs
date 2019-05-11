@@ -7,7 +7,6 @@ namespace Sebagomez.TwitterLib.API.Options
 	public abstract class TwitterOptions
 	{
 		public AuthenticatedUser User { get; set; }
-		public AppCredentials Application { get; set; }
 		public abstract Dictionary<string, string> GetParameters();
 
 		public string GetUrlParameters()

@@ -17,7 +17,7 @@ namespace Sebagomez.TwitterLib.API.Tweets
 			if (options.User == null)
 				throw new Exception("NO USER");
 
-			if (options.Application == null)
+			if (options.User.AppSettings == null)
 				throw new Exception("NO APPLICATION");
 		}
 

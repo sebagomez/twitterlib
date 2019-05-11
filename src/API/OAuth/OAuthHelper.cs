@@ -78,8 +78,8 @@ namespace Sebagomez.TwitterLib.API.OAuth
 
 			Dictionary<string, string> parms = GetParms(nonce, timestamp, options, callBack, imageUpload);
 			string signatureBase = SignatureBsseString(method.Method, baseUrl, parms);
-			string signature = OAuthAuthenticator.SignBaseString(signatureBase, options.User.OAuthTokenSecret, options.Application.AppSecret);
-			string authHeader = OAuthAuthenticator.AuthorizationHeader(nonce, signature, timestamp, options.User.OAuthToken, callBack, string.Empty, options.Application.AppKey);
+			string signature = OAuthAuthenticator.SignBaseString(signatureBase, options.User.OAuthTokenSecret, options.User.AppSettings.AppSecret);
+			string authHeader = OAuthAuthenticator.AuthorizationHeader(nonce, signature, timestamp, options.User.OAuthToken, callBack, string.Empty, options.User.AppSettings.AppKey);
 
 			HttpRequestMessage reqMsg = new HttpRequestMessage(method, url);
 			reqMsg.Headers.Add(Constants.HEADERS.AUTHORIZATION, authHeader);
@@ -92,7 +92,7 @@ namespace Sebagomez.TwitterLib.API.OAuth
 			Dictionary<string, string> dic = new Dictionary<string, string>();
 			if (callBack)
 				dic.Add("oauth_callback", "oob");
-			dic.Add(OAUTH_CONSUMER_KEY, Util.EncodeString(options.Application.AppKey));
+			dic.Add(OAUTH_CONSUMER_KEY, Util.EncodeString(options.User.AppSettings.AppKey));
 			dic.Add(OAUTH_NONCE, nonce);
 			dic.Add(OAUTH_SIGNATURE_METHOD, HMAC_SHA1);
 			dic.Add(OAUTH_TIMESTAMP, timestamp);

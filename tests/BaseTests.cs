@@ -14,12 +14,14 @@ namespace TwitterLibTests
 		internal const string HUGE_MEDIA = "BiggerThan5MB.jpg";
 
 		protected AuthenticatedUser m_user;
-		protected AppCredentials m_app;
 
 		protected AuthenticatedUser LoadTestUser(string userhandle)
 		{
-			using (FileStream file = File.OpenRead(Path.Combine(ResourcesDirectory, $"{userhandle}.usr")))
-				return Util.Deserialize<AuthenticatedUser>(file);
+			string fullPath = Path.Combine(ResourcesDirectory, $"{userhandle}.data");
+			if (!File.Exists(fullPath))
+				throw new FileNotFoundException($"Could not find user file:{userhandle}", fullPath);
+
+			return AuthenticatedUser.Deserialize(fullPath);
 		}
 
 		string m_resourcesDir;
@@ -27,7 +29,6 @@ namespace TwitterLibTests
 
 		public BaseTests()
 		{
-			m_app = AppCredentials.Initialize(Credentials.Current.SHELLTWIT_KEY, Credentials.Current.SHELLTWIT_SECRET);
 			m_user = LoadTestUser("sebatestapi");
 		}
 

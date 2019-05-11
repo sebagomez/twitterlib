@@ -15,7 +15,7 @@ namespace TwitterLibTests
 		{
 			try
 			{
-				List<Sebagomez.TwitterLib.Entities.Status> ss = await Timeline.GetTimeline(new TimelineOptions { User = m_user, Application = m_app });
+				List<Sebagomez.TwitterLib.Entities.Status> ss = await Timeline.GetTimeline(new TimelineOptions { User = m_user });
 				Assert.True(ss.Count > 0, "Ningún tweet!");
 			}
 			catch (Exception ex)
@@ -29,7 +29,7 @@ namespace TwitterLibTests
 		{
 			try
 			{
-				UserTimelineOptions options = new UserTimelineOptions { ScreenName = "sebagomez", ExcludeReplies = true, IncludeRTs = false, User = m_user, Application = m_app };
+				UserTimelineOptions options = new UserTimelineOptions { ScreenName = "sebagomez", ExcludeReplies = true, IncludeRTs = false, User = m_user };
 				List<Sebagomez.TwitterLib.Entities.Status> ss = await UserTimeline.GetUserTimeline(options);
 				Assert.True(ss.Count > 0, "Ningún tweet!");
 			}
@@ -45,7 +45,7 @@ namespace TwitterLibTests
 			try
 			{
 				int count = 200;
-				UserTimelineOptions options = new UserTimelineOptions { ScreenName = "sebagomez", Count = count, User = m_user, Application = m_app };
+				UserTimelineOptions options = new UserTimelineOptions { ScreenName = "sebagomez", Count = count, User = m_user };
 				List<Sebagomez.TwitterLib.Entities.Status> ss = await UserTimeline.GetUserTimeline(options);
 				Assert.True(ss.Count > 0, "Ningún tweet!");
 				Assert.True(ss.Count <= count, $"No trajo {count}?");

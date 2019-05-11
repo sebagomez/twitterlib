@@ -1,25 +1,22 @@
 ﻿using System;
 using System.IO;
-using System.Runtime.Serialization;
-using System.Xml.Serialization;
-using Sebagomez.TwitterLib.API.OAuth;
+using System.Runtime.Serialization.Json;
+using System.Text;
 
 namespace Sebagomez.TwitterLib.Helpers
 {
 	public class AuthenticatedUser
 	{
-
-		const string USER_FILE = "twit.usr";
 		const string OAUTH_TOKEN = "oauth_token";
 		const string OAUTH_TOKEN_SECRET = "oauth_token_secret";
-
-		static string s_configFile = Path.Combine(Util.FilesLocation, USER_FILE);
+		const string USER_ID = "user_id";
+		const string SCREEN_NAME = "screen_name";
 
 		public AppCredentials AppSettings { get; set; }
-
 		public string OAuthToken { get; set; }
-
 		public string OAuthTokenSecret { get; set; }
+		public string UserId { get; set; }
+		public string ScreenName { get; set; }
 
 		public AuthenticatedUser() { }
 
@@ -38,18 +35,6 @@ namespace Sebagomez.TwitterLib.Helpers
 					!string.IsNullOrEmpty(AppSettings.AppSecret);
 		}
 
-		public static AuthenticatedUser GetUserCrdentials(string username)
-		{
-			username = username.Replace(Path.DirectorySeparatorChar, '.');
-
-			string userPath = Path.Combine(Util.FilesLocation, username);
-
-			if (!File.Exists(userPath))
-				return null;
-
-			return Deserialize();
-		}
-
 		public void SaveUserCredentials(string username)
 		{
 			username = username.Replace(Path.DirectorySeparatorChar, '.');
@@ -59,48 +44,60 @@ namespace Sebagomez.TwitterLib.Helpers
 			Serialize(userPath);
 		}
 
-		public void SerializeTokens(string accessTokens)
+		public void ParseTokens(string accessTokens)
 		{
 			string[] tokens = accessTokens.Split(new char[] { '&' }, StringSplitOptions.RemoveEmptyEntries);
 
 			foreach (string tok in tokens)
 			{
 				string[] props = tok.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
-				if (props[0] != OAUTH_TOKEN && props[0] != OAUTH_TOKEN_SECRET)
-					continue;
 
 				if (props[0] == OAUTH_TOKEN)
 					OAuthToken = props[1];
 				else if (props[0] == OAUTH_TOKEN_SECRET)
 					OAuthTokenSecret = props[1];
-
-				if (!string.IsNullOrEmpty(OAuthToken) && !string.IsNullOrEmpty(OAuthTokenSecret))
-					break;
+				else if (props[0] == USER_ID)
+					UserId = props[1];
+				else if (props[0] == SCREEN_NAME)
+					ScreenName = props[1];
 			}
-
-			Serialize();
-		}
-
-		private void Serialize()
-		{
-			Serialize(s_configFile);
 		}
 
 		public void Serialize(string fileName)
 		{
-			Util.Serialize(this, fileName);
+			using (MemoryStream ms = new MemoryStream())
+			{
+				DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(AuthenticatedUser));
+				serializer.WriteObject(ms, this);
+				string serialized = Encoding.Default.GetString(ms.ToArray());
+
+				var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(serialized);
+				string encoded = System.Convert.ToBase64String(plainTextBytes);
+
+				File.WriteAllText(fileName, encoded);
+			}
 		}
 
-		static AuthenticatedUser Deserialize()
+		public static AuthenticatedUser Deserialize(string filePath)
 		{
-			using (FileStream file = File.Open(s_configFile, FileMode.Open))
-				return Util.Deserialize<AuthenticatedUser>(file);
-		}
+			if (!File.Exists(filePath))
+				return null;
 
-		public static void ClearCredentials()
-		{
-			if (File.Exists(s_configFile))
-				File.Delete(s_configFile);
+			try
+			{
+				using (StreamReader file = File.OpenText(filePath))
+				{
+					string content = file.ReadToEnd();
+					var base64EncodedBytes = Convert.FromBase64String(content);
+					string decoded = Encoding.UTF8.GetString(base64EncodedBytes);
+
+					return Util.Deserialize<AuthenticatedUser>(decoded);
+				}
+			}
+			catch
+			{
+				return null;
+			}
 		}
 	}
 }

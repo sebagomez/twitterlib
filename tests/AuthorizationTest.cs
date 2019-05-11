@@ -12,7 +12,7 @@ namespace TwitterLibTests
 		{
 			try
 			{
-				string token = OAuthAuthenticator.GetOAuthToken(m_app.AppKey, m_app.AppSecret).Result;
+				string token = OAuthAuthenticator.GetOAuthToken(m_user.AppSettings.AppKey, m_user.AppSettings.AppSecret).Result;
 
 				Assert.True(token.Length == 27, "OK");
 			}
@@ -29,10 +29,10 @@ namespace TwitterLibTests
 			{
 				string pin = "3616991";
 				string oAuthToken = "Kn5i6AAAAAAAARPWAAABXHm2bfw";
-				string accessTokens = OAuthAuthenticator.GetPINToken(oAuthToken, pin, m_app.AppKey, m_app.AppSecret).Result;
+				string accessTokens = OAuthAuthenticator.GetPINToken(oAuthToken, pin, m_user.AppSettings.AppKey, m_user.AppSettings.AppSecret).Result;
 
 				AuthenticatedUser user = new AuthenticatedUser();
-				user.SerializeTokens(accessTokens);
+				user.ParseTokens(accessTokens);
 
 			}
 			catch (Exception ex)

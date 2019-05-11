@@ -16,6 +16,6 @@ TestResults/
 launchSettings.json
 #SecureData.txt
 #SecretBaseTests.cs
-twit.data
+*.data
 
 *.usr

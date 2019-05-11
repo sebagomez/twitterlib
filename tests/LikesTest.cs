@@ -16,7 +16,7 @@ namespace TwitterLibTests
 		{
 			try
 			{
-				LikesOptions options = new LikesOptions { ScreenName = "sebagomez", User = m_user, Application = m_app };
+				LikesOptions options = new LikesOptions { ScreenName = "sebagomez", User = m_user };
 				List<Sebagomez.TwitterLib.Entities.Status> ss = await Likes.GetUserLikes(options);
 				Assert.True(ss.Count > 0, "Ningún tweet!");
 			}

@@ -14,9 +14,9 @@
     <PackageTags>twitter</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/sebagomez/twitterlib/master/src/twit.ico</PackageIconUrl>
     <RepositoryUrl>https://github.com/sebagomez/twitterlib</RepositoryUrl>
-    <Version>1.2</Version>
+    <Version>1.2.1</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageReleaseNotes>- fixed authentication function</PackageReleaseNotes>
+    <PackageReleaseNotes>- improved call quality and test code coverage</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

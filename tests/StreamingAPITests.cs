@@ -34,28 +34,28 @@ namespace TwitterLibTests
 		[Fact]
 		public void GetStreamingTimeline()
 		{
-			StreamingOptions options = new StreamingOptions { Track = "trump", User = m_user, Application = m_app };
+			StreamingOptions options = new StreamingOptions { Track = "trump", User = m_user };
 			Execute(options);
 		}
 
 		[Fact]
 		public void GetStreamingTimelineWithSpace()
 		{
-			StreamingOptions options = new StreamingOptions { Track = "twitter com", User = m_user, Application = m_app };
+			StreamingOptions options = new StreamingOptions { Track = "twitter com", User = m_user };
 			Execute(options);
 		}
 
 		[Fact]
 		public void GetStreamingTimelineWithComa()
 		{
-			StreamingOptions options = new StreamingOptions { Track = "twitter,facebook", User = m_user, Application = m_app };
+			StreamingOptions options = new StreamingOptions { Track = "twitter,facebook", User = m_user };
 			Execute(options);
 		}
 
 		[Fact]
 		public void GetStreamingTimelineWithHashtag()
 		{
-			StreamingOptions options = new StreamingOptions { Track = "#Trump", User = m_user, Application = m_app };
+			StreamingOptions options = new StreamingOptions { Track = "#Trump", User = m_user };
 			Execute(options);
 		}
 
@@ -63,7 +63,7 @@ namespace TwitterLibTests
 		public void GetStreamingUserTimeline()
 		{
 			//sebatestapi 108356361
-			StreamingOptions options = new StreamingOptions { User = m_user, Application = m_app, Follow = "sebatestapi" };
+			StreamingOptions options = new StreamingOptions { User = m_user, Follow = "sebatestapi" };
 
 			try
 			{
