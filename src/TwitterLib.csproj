@@ -4,19 +4,20 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Sebagomez.TwitterLib</AssemblyName>
     <RootNamespace>Sebagomez.TwitterLib</RootNamespace>
-    <ApplicationIcon />
+    <ApplicationIcon>TwitterLib.ico</ApplicationIcon>
     <Authors>@sebagomez</Authors>
     <Description>Complete Twitter Library for the .NET platform (standard 2.0)</Description>
     <Copyright>Copyright 2019 @SebaGomez</Copyright>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/sebagomez/twitterlib</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>twitter</PackageTags>
-    <PackageIconUrl>https://raw.githubusercontent.com/sebagomez/twitterlib/master/src/twit.ico</PackageIconUrl>
+    <PackageTags>twitter,twitter-api,oauth</PackageTags>
+    <PackageIconUrl>https://raw.githubusercontent.com/sebagomez/twitterlib/master/src/TwitterLib.ico</PackageIconUrl>
     <RepositoryUrl>https://github.com/sebagomez/twitterlib</RepositoryUrl>
-    <Version>1.2.1</Version>
+    <Version>1.2.2</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageReleaseNotes>- improved call quality and test code coverage</PackageReleaseNotes>
+    <PackageReleaseNotes>- new image
+- improved code quality</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

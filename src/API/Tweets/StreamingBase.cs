@@ -29,7 +29,7 @@ namespace Sebagomez.TwitterLib.API.Tweets
 
 			if (!string.IsNullOrWhiteSpace(options.Follow) && !long.TryParse(options.Follow, out long id))
 			{
-				User data = Task.Run( () => UserData.GetUser(new UserShowOptions { User = options.User, ScreenName = options.Follow })).Result;
+				User data = Task.Run(() => UserData.GetUser(new UserShowOptions { User = options.User, ScreenName = options.Follow })).Result;
 				options.Follow = data.id_str;
 			}
 
@@ -49,6 +49,7 @@ namespace Sebagomez.TwitterLib.API.Tweets
 				request.Content = formUrlEncodedContent;
 
 				var response = httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead).Result;
+
 				if (!response.IsSuccessStatusCode)
 				{
 					using (var reader = new StreamReader(response.Content.ReadAsStreamAsync().Result))
@@ -61,7 +62,7 @@ namespace Sebagomez.TwitterLib.API.Tweets
 					}
 				}
 
-				using (var reader = new StreamReader(response.Content.ReadAsStreamAsync().Result))
+				using (StreamReader reader = new StreamReader(response.Content.ReadAsStreamAsync().Result))
 				{
 					while (!reader.EndOfStream)
 					{

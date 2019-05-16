@@ -17,7 +17,7 @@ namespace TwitterLibTests
 				int count = 0;
 				foreach (Status status in streamingFilter.GetStreamingStatus(options))
 				{
-					System.Diagnostics.Debug.Write(status);
+					System.Diagnostics.Debug.WriteLine(status);
 					count++;
 
 					if (count == 5)
