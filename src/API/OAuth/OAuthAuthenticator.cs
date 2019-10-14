@@ -101,13 +101,15 @@ namespace Sebagomez.TwitterLib.API.OAuth
 
 		public static string SignBaseString(string signatureBase, string oAuthSecret, string appSecret)
 		{
-			HMACSHA1 hmacsha1 = new HMACSHA1();
-			hmacsha1.Key = Util.GetUTF8EncodingBytes(string.Format("{0}&{1}", Util.EncodeString(appSecret), string.IsNullOrEmpty(oAuthSecret) ? "" : Util.EncodeString(oAuthSecret)));
+			using (HMACSHA1 hmacsha1 = new HMACSHA1())
+			{
+				hmacsha1.Key = Util.GetUTF8EncodingBytes(string.Format("{0}&{1}", Util.EncodeString(appSecret), string.IsNullOrEmpty(oAuthSecret) ? "" : Util.EncodeString(oAuthSecret)));
 
-			byte[] dataBuffer = Encoding.ASCII.GetBytes(signatureBase);
-			byte[] hashBytes = hmacsha1.ComputeHash(dataBuffer);
+				byte[] dataBuffer = Encoding.ASCII.GetBytes(signatureBase);
+				byte[] hashBytes = hmacsha1.ComputeHash(dataBuffer);
 
-			return Convert.ToBase64String(hashBytes);
+				return Convert.ToBase64String(hashBytes);
+			}
 		}
 
 		#endregion

@@ -28,8 +28,10 @@ namespace Sebagomez.TwitterLib.API.Options
 
 		public override Dictionary<string, string> GetParameters()
 		{
-			Dictionary<string, string> parameters = new Dictionary<string, string>();
-			parameters.Add("status", Status);
+			Dictionary<string, string> parameters = new Dictionary<string, string>
+			{
+				{ "status", Status }
+			};
 			if (!string.IsNullOrEmpty(ReplyId))
 				parameters.Add("in_reply_to_status_id", ReplyId);
 			if (HasMedia)

@@ -10,9 +10,7 @@ namespace Sebagomez.TwitterLib.Helpers
 {
 	public class Util
 	{
-		const string MICROSOFT_WINDOWS = "Microsoft Windows";
-
-		static HttpClient s_client = new HttpClient();
+		static readonly HttpClient s_client = new HttpClient();
 
 		static Util()
 		{

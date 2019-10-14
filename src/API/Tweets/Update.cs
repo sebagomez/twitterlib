@@ -22,24 +22,20 @@ namespace Sebagomez.TwitterLib.API.Tweets
 		const string MEDIA = "media_ids";
 		const string IN_REPLY_TO = "in_reply_to_status_id";
 
+		const int MAX_MEDIA = 4;
 
 		#region Update Status
+
+		public static string UpdateStatusSync(UpdateOptions options)
+		{
+			return UpdateStatus(options).Result;
+		}
 
 		public static async Task<string> UpdateStatus(UpdateOptions options)
 		{
 			try
 			{
 				CheckData(options);
-
-				if ((!string.IsNullOrEmpty(options.BitLyKey)) && (!string.IsNullOrEmpty(options.BitLyLogin)))
-				{
-					try
-					{
-						BitLyHelper.BitLyShortener shortener = new BitLyHelper.BitLyShortener(options.BitLyLogin, options.BitLyKey);
-						options.Status = await shortener.GetShortenString(options.Status);
-					}
-					catch { }
-				}
 
 				Regex regex = new Regex(@"\[(.*?)\]");
 				foreach (Match match in regex.Matches(options.Status))
@@ -51,11 +47,9 @@ namespace Sebagomez.TwitterLib.API.Tweets
 					options.MediaFiles.Add(file);
 				}
 
-				if (options.MediaFiles.Count > 4) //limited by the twitter API
-					throw new ArgumentOutOfRangeException("media", "Up to 4 media files are allowed per tweet");
+				if (options.MediaFiles.Count > MAX_MEDIA) //limited by the twitter API
+					throw new ArgumentOutOfRangeException(nameof(options.MediaFiles), $"Up to {MAX_MEDIA} media files are allowed per tweet");
 
-				//if (options.User == null)
-				//	options.User = AuthenticatedUser.CurrentUser;
 				if (string.IsNullOrEmpty(options.OriginalSatatus))
 					options.OriginalSatatus = options.Status;
 
@@ -105,20 +99,21 @@ namespace Sebagomez.TwitterLib.API.Tweets
 			foreach (FileInfo file in options.MediaFiles)
 			{
 				WriteMessage($"Uploading {file.Name}");
-				HttpRequestMessage reqMsg = OAuthHelper.GetRequest(HttpMethod.Post, MEDIA_UPLOAD, options, true, true);
-
-				MultipartFormDataContent content = new MultipartFormDataContent(GetMultipartBoundary());
-				using (FileStream fs = File.Open(file.FullName, FileMode.Open))
+				using (HttpRequestMessage reqMsg = OAuthHelper.GetRequest(HttpMethod.Post, MEDIA_UPLOAD, options, true, true))
 				{
-					StreamContent streamContent = new StreamContent(fs);
-					streamContent.Headers.Add(Constants.HEADERS.CONTENT_TYPE, Constants.CONTENT_TYPE.OCTET_STREAM);
-					streamContent.Headers.Add(Constants.HEADERS.CONTENT_DISPOSITION, string.Format(Constants.FORM_DATA, file.Name));
-					content.Add(streamContent);
+					MultipartFormDataContent content = new MultipartFormDataContent(GetMultipartBoundary());
+					using (FileStream fs = File.Open(file.FullName, FileMode.Open))
+					{
+						StreamContent streamContent = new StreamContent(fs);
+						streamContent.Headers.Add(Constants.HEADERS.CONTENT_TYPE, Constants.CONTENT_TYPE.OCTET_STREAM);
+						streamContent.Headers.Add(Constants.HEADERS.CONTENT_DISPOSITION, string.Format(Constants.FORM_DATA, file.Name));
+						content.Add(streamContent);
 
-					reqMsg.Content = content;
+						reqMsg.Content = content;
 
-					Media media = await GetData<Media>(reqMsg);
-					options.MediaIds.Add(media.media_id_string);
+						Media media = await GetData<Media>(reqMsg);
+						options.MediaIds.Add(media.media_id_string);
+					}
 				}
 			}
 		}

@@ -14,14 +14,10 @@
     <PackageTags>twitter,twitter-api,oauth</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/sebagomez/twitterlib/master/src/TwitterLib.ico</PackageIconUrl>
     <RepositoryUrl>https://github.com/sebagomez/twitterlib</RepositoryUrl>
-    <Version>1.2.2</Version>
+    <Version>1.2.4</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageReleaseNotes>- new image
+    <PackageReleaseNotes>- removed BitLy dependency
 - improved code quality</PackageReleaseNotes>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Sebagomez.BitLyHelper" Version="1.1.2" />
-  </ItemGroup>
 
 </Project>

@@ -31,8 +31,10 @@ namespace Sebagomez.TwitterLib.API.Options
 
 		public override Dictionary<string, string> GetParameters()
 		{
-			Dictionary<string, string> parameters = new Dictionary<string, string>();
-			parameters.Add("q", Query);
+			Dictionary<string, string> parameters = new Dictionary<string, string>
+			{
+				{ "q", Query }
+			};
 			if (Feed != FeedType.All)
 				parameters.Add("f", Feed.ToString().ToLower());
 			if (Count > 0)

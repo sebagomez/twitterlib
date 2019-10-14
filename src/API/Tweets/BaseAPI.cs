@@ -38,28 +38,11 @@ namespace Sebagomez.TwitterLib.API.Tweets
 
 			if (!response.IsSuccessStatusCode)
 			{
-				UpdateError err = null;
-				Stream aux = new MemoryStream();
-				stream.CopyTo(aux);
-				stream.Position = 0;
-				aux.Position = 0;
-				try
-				{
-					err = Util.Deserialize<UpdateError>(stream);
-				}
-				catch (Exception)
-				{
-					string strData;
-					using (StreamReader reader = new StreamReader(aux))
-						strData = reader.ReadToEnd();
-
-					throw new Exception($"{response.StatusCode}:{strData}");
-				}
-
-				throw new Exception(err.ToString());
+				using (StreamReader reader = new StreamReader(stream))
+					throw new Exception($"{response.StatusCode}:{ reader.ReadToEnd()}");
 			}
 
 			return Util.Deserialize<T>(stream);
 		}
-	}
+}
 }
