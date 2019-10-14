@@ -6,6 +6,7 @@
 [Oo]bj/
 [Pp]ackages/
 TestResults/
+PublishProfiles/
 
 *.testsettings
 *.suo
