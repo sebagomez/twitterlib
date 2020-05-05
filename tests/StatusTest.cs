@@ -29,6 +29,21 @@ namespace TwitterLibTests
 		}
 
 		[Fact]
+		public async Task StatusBasicoMultiline()
+		{
+			string status = string.Format("Hello{0}Multiline{0}World{0}{1}", Environment.NewLine, DateTime.Now);
+			try
+			{
+				string response = await Sebagomez.TwitterLib.API.Tweets.Update.UpdateStatus(new UpdateOptions() { Status = status, User = m_user });
+				Assert.Equal("OK", response);
+			}
+			catch (Exception ex)
+			{
+				Assert.True(false, Util.ExceptionMessage(ex));
+			}
+		}
+
+		[Fact]
 		public async Task StatusBasicoRepetido()
 		{
 			DateTime now = DateTime.Now;
