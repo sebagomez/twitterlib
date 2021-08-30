@@ -22,6 +22,7 @@ jobs:
     - name: Inject test credentials
       run: | 
         echo $SEBA_TEST_API > ./tests/Resources/sebatestapi.data
+        ls ./tests/Resources
         cat ./tests/Resources/sebatestapi.data
     - name: Build
       run: dotnet build --no-restore --configuration Release
