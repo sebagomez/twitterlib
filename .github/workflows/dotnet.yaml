@@ -35,7 +35,7 @@ jobs:
         NUGET_KEY: ${{ secrets.TWITTERLIB_NUGET_KEY }}
       run: |
         nupkg=./bin/$(ls ./bin)
-        dotnet nuget push -s $nupkg -k $NUGET_KEY
+        dotnet nuget push $nupkg -k $NUGET_KEY
     # - name: Publish NuGet
     #   env:
     #     NUGET_KEY: ${{ secrets.TWITTERLIB_NUGET_KEY }}
