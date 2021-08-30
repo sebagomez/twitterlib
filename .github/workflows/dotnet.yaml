@@ -28,5 +28,12 @@ jobs:
       run: dotnet build --no-restore --configuration $CONFIGURATION
     - name: Test
       run: dotnet test --no-build --verbosity $VERBOSITY --configuration $CONFIGURATION
-    - name: Pack
-      run: dotnet pack --no-build --configuration $CONFIGURATION --output ./bin ./src/TwitterLib.csproj
+    - name: Publish NuGet
+      env:
+        NUGET_KEY: ${{ secrets.TWITTERLIB_NUGET_KEY }}
+      uses: brandedoutcast/publish-nuget@v2.5.5
+      with:
+        # Filepath of the project to be packaged, relative to root of repository
+        PROJECT_FILE_PATH: ./src/TwitterLib.csproj
+        # API key to authenticate with NuGet server
+        NUGET_KEY: $NUGET_KEY
