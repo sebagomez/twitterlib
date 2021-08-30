@@ -28,3 +28,5 @@ jobs:
       run: dotnet build --no-restore --configuration $CONFIGURATION
     - name: Test
       run: dotnet test --no-build --verbosity $VERBOSITY --configuration $CONFIGURATION
+    - name: Pack
+      run: dotnet pack --no-build --configuration $CONFIGURATION --output ./bin ./src/TwitterLib.csproj
