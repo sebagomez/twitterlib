@@ -21,5 +21,7 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
+    - name: Inject test credentials
+      run: echo $SEBA_TEST_API > ./tests/Resources/sebatestapi.data
     - name: Test
       run: dotnet test --no-build --verbosity normal
