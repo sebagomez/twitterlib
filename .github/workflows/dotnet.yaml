@@ -3,13 +3,14 @@ name: .NET
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
+    env:
+      CONFIGURATION: Release
+      VERBOSITY: normal
 
     steps:
     - uses: actions/checkout@v2
@@ -24,10 +25,9 @@ jobs:
         SEBA_TEST_API: ${{ secrets.SEBA_TEST_API }}
       run: | 
         echo $SEBA_TEST_API > ./tests/Resources/sebatestapi.data
-        ls ./tests/Resources
-        cat ./tests/Resources/sebatestapi.data
+        ls -l ./tests/Resources
     - name: Build
-      run: dotnet build --no-restore --configuration Release
+      run: dotnet build --no-restore --configuration $CONFIGURATION
 
     - name: Test
-      run: dotnet test --no-build --verbosity detailed --configuration Release
+      run: dotnet test --no-build --verbosity $VERBOSITY --configuration $CONFIGURATION
