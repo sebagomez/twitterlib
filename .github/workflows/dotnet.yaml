@@ -11,6 +11,7 @@ jobs:
     env:
       CONFIGURATION: Release
       VERBOSITY: normal
+      NUGET_SOURCE: https://api.nuget.org/v3/index.json
 
     steps:
     - uses: actions/checkout@v2
@@ -35,13 +36,5 @@ jobs:
         NUGET_KEY: ${{ secrets.TWITTERLIB_NUGET_KEY }}
       run: |
         nupkg=./bin/$(ls ./bin)
-        dotnet nuget push $nupkg -k $NUGET_KEY
-    # - name: Publish NuGet
-    #   env:
-    #     NUGET_KEY: ${{ secrets.TWITTERLIB_NUGET_KEY }}
-    #   uses: brandedoutcast/publish-nuget@v2.5.5
-    #   with:
-    #     # Filepath of the project to be packaged, relative to root of repository
-    #     PROJECT_FILE_PATH: ./src/TwitterLib.csproj
-    #     # API key to authenticate with NuGet server
-    #     NUGET_KEY: $NUGET_KEY
+        dotnet nuget push $nupkg -k $NUGET_KEY -s $NUGET_SOURCE
+
