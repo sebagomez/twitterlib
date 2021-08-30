@@ -32,7 +32,9 @@ namespace TwitterLibTests
 			}
 		}
 
+#if DEBUG
 		[Fact]
+#endif
 		public void GetStreamingTimeline()
 		{
 			Thread.Sleep(2000);
@@ -40,7 +42,9 @@ namespace TwitterLibTests
 			Execute(options);
 		}
 
+#if DEBUG
 		[Fact]
+#endif
 		public void GetStreamingTimelineWithSpace()
 		{
 			Thread.Sleep(2000);
@@ -48,7 +52,9 @@ namespace TwitterLibTests
 			Execute(options);
 		}
 
+#if DEBUG
 		[Fact]
+#endif
 		public void GetStreamingTimelineWithComa()
 		{
 			Thread.Sleep(2000);
@@ -56,7 +62,9 @@ namespace TwitterLibTests
 			Execute(options);
 		}
 
+#if DEBUG
 		[Fact]
+#endif
 		public void GetStreamingTimelineWithHashtag()
 		{
 			Thread.Sleep(2000);
@@ -64,7 +72,9 @@ namespace TwitterLibTests
 			Execute(options);
 		}
 
+#if DEBUG
 		[Fact]
+#endif
 		public void GetStreamingUserTimeline()
 		{
 			StreamingOptions options = new StreamingOptions { User = m_user, Follow = "sebatestapi" };
