@@ -36,6 +36,6 @@ steps:
 - script: dotnet pack --no-build --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory) ./src/TwitterLib.csproj
   displayName: 'NuGet pack'
 
-- task: PublishBuildArtifacts@1
-  inputs:
-    ArtifactName: 'nuget'
+# - task: PublishBuildArtifacts@1
+#   inputs:
+#     ArtifactName: 'nuget'

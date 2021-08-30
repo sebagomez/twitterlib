@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Sebagomez.TwitterLib.Helpers
+﻿namespace Sebagomez.TwitterLib.Helpers
 {
 	public class AppCredentials
 	{
