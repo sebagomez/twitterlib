@@ -20,9 +20,11 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Inject test credentials
-      run: echo $SEBA_TEST_API > ./tests/Resources/sebatestapi.data
+      run: | 
+        echo $SEBA_TEST_API > ./tests/Resources/sebatestapi.data
+        cat ./tests/Resources/sebatestapi.data
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --no-restore --configuration Release
 
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity detailed --configuration Release
