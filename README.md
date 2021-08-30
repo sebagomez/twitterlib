@@ -1,3 +1,4 @@
+[![.NET](https://github.com/sebagomez/twitterlib/actions/workflows/dotnet.yaml/badge.svg?branch=master)](https://github.com/sebagomez/twitterlib/actions/workflows/dotnet.yaml)
 [![Build Status](https://dev.azure.com/sebagomez/twitterlib/_apis/build/status/sebagomez.twitterlib?branchName=master)](https://dev.azure.com/sebagomez/twitterlib/_build/latest?definitionId=12&branchName=master)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/Sebagomez.TwitterLib.svg?label=NuGet%20downloads)](https://www.nuget.org/packages/Sebagomez.TwitterLib/)
 
