@@ -15,7 +15,7 @@ namespace TwitterLibTests
 		{
 			try
 			{
-				DMOptions options = new DMOptions { User = m_user, Text = "Hello World!", RecipientId = "9096202" };
+				DMOptions options = new DMOptions { User = m_user, Text = "Hi!, I'm running tests!", RecipientId = "9096202" };
 				string result = await DirectMessages.SendDM(options);
 
 				Assert.True(result == "OK");

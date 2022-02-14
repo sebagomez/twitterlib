@@ -12,14 +12,12 @@ namespace TwitterLibTests
 {
 	public class ActivityTest : BaseTests
 	{
-		[Fact]
+		//[Fact]
 		public async Task AddWebHook()
 		{
 			try
 			{
-
-				//https://isit737max.azurewebsites.net/api/IsIt737MAX?code=NYvp0jihegpKEveS7lir/uJ4mj0un512fEa8D5XqlmMKKXGuJNDTTQ==
-				string code = "NYvp0jihegpKEveS7lir/uJ4mj0un512fEa8D5XqlmMKKXGuJNDTTQ==";
+				string code = "<GET_FROM_AZURE_PORTAL>";
 				string baseUrl = "https://isit737max.azurewebsites.net/api/IsIt737MAX";
 				string parm = code.Length > 0 ? $"?code={code}" : "";
 
@@ -34,7 +32,7 @@ namespace TwitterLibTests
 			}
 		}
 
-		[Fact]
+		//[Fact]
 		public async Task GetEnvWebHooks()
 		{
 			try
@@ -50,7 +48,7 @@ namespace TwitterLibTests
 			}
 		}
 
-		[Fact]
+		//[Fact]
 		public async Task DeleteWebHooks()
 		{
 			try
@@ -66,7 +64,7 @@ namespace TwitterLibTests
 			}
 		}
 
-		[Fact]
+		//[Fact]
 		public async Task DeleteAllWebHooks()
 		{
 			try
@@ -100,7 +98,7 @@ namespace TwitterLibTests
 			}
 		}
 
-		[Fact]
+		//[Fact]
 		public async Task SubscribeToWebHooks()
 		{
 			try
