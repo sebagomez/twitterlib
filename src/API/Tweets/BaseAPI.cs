@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Sebagomez.TwitterLib.API.Options;
-using Sebagomez.TwitterLib.Entities;
 using Sebagomez.TwitterLib.Helpers;
 
 namespace Sebagomez.TwitterLib.API.Tweets
@@ -33,6 +33,20 @@ namespace Sebagomez.TwitterLib.API.Tweets
 
 		public static async Task<T> GetData<T>(HttpRequestMessage reqMsg)
 		{
+			var (stream, _) = await GetResponseStream(reqMsg);
+
+			return Util.Deserialize<T>(stream);
+		}
+
+		public static async Task<HttpStatusCode> GetStatusCode(HttpRequestMessage reqMsg)
+		{ 
+			var (_, statusCode) = await GetResponseStream(reqMsg);
+
+			return statusCode;
+		}
+
+		private static async Task<(Stream, HttpStatusCode)> GetResponseStream(HttpRequestMessage reqMsg)
+		{
 			HttpResponseMessage response = await Util.Client.SendAsync(reqMsg);
 			Stream stream = await response.Content.ReadAsStreamAsync();
 
@@ -42,7 +56,7 @@ namespace Sebagomez.TwitterLib.API.Tweets
 					throw new Exception($"{response.StatusCode}:{ reader.ReadToEnd()}");
 			}
 
-			return Util.Deserialize<T>(stream);
+			return (stream, response.StatusCode);
 		}
-}
+	}
 }

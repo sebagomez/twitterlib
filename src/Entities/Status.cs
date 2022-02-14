@@ -41,7 +41,7 @@ namespace Sebagomez.TwitterLib.Entities
 					if (extended_tweet != null)
 						m_resolvedText = extended_tweet.ResolvedText;
 					else if (quoted_status != null)
-						m_resolvedText = $"{Text}{Environment.NewLine}\"{quoted_status.ResolvedText}\"";
+						m_resolvedText = $"{Text}{System.Environment.NewLine}\"{quoted_status.ResolvedText}\"";
 					else if (retweeted_status != null)
 						m_resolvedText = retweeted_status.ResolvedText;
 					else

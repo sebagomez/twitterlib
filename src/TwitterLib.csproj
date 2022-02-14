@@ -2,12 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <!--<TargetFramework>netcoreapp3.1</TargetFramework>-->
     <AssemblyName>Sebagomez.TwitterLib</AssemblyName>
     <RootNamespace>Sebagomez.TwitterLib</RootNamespace>
     <ApplicationIcon>TwitterLib.ico</ApplicationIcon>
     <Authors>@sebagomez</Authors>
     <Description>Complete Twitter Library for the .NET platform (.NET 5.0)</Description>
-    <Copyright>Copyright 2021 @SebaGomez</Copyright>
+    <Copyright>Copyright 2022 @SebaGomez</Copyright>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/sebagomez/twitterlib</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
@@ -15,15 +16,15 @@
     <PackageIconUrl>https://raw.githubusercontent.com/sebagomez/twitterlib/master/src/TwitterLib.ico</PackageIconUrl>
     <PackageIcon>TwitterLib.png</PackageIcon>
     <RepositoryUrl>https://github.com/sebagomez/twitterlib</RepositoryUrl>
-    <Version>1.3.0</Version>
+    <Version>1.4.0</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageReleaseNotes>- Upgraded to .NET 5</PackageReleaseNotes>
-    <ReleaseVersion>0.2</ReleaseVersion>
+    <PackageReleaseNotes>- Implemented Account Activity API and Direct Messages API</PackageReleaseNotes>
+    <ReleaseVersion>0.3</ReleaseVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <Folder Include="Properties\" />
-    <None Include="TwitterLib.png" Pack="true" PackagePath="\"/>
+    <None Include="TwitterLib.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>

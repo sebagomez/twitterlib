@@ -17,3 +17,5 @@ TwitterLib is a simple yet powerfull .NET 5 SDK wrapper for the twitter API. It 
 - [Favorites List](https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-favorites-list)
 - [Streaming statuses](https://developer.twitter.com/en/docs/tweets/filter-realtime/api-reference/post-statuses-filter.html)
 - [Streaming user](https://developer.twitter.com/en/docs/tweets/filter-realtime/guides/basic-stream-parameters)
+- [Account Activity](https://developer.twitter.com/en/docs/twitter-api/enterprise/account-activity-api/overview)
+- [Direct Messages](https://developer.twitter.com/en/docs/twitter-api/v1/direct-messages/sending-and-receiving/overview)

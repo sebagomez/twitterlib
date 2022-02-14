@@ -112,6 +112,17 @@ namespace Sebagomez.TwitterLib.API.OAuth
 			}
 		}
 
+		public static string GetCRCResponseToken(string clientSecret, string crc_token)
+		{
+			using (HMACSHA256 hmacsha1 = new HMACSHA256(Util.GetUTF8EncodingBytes(clientSecret)))
+			{
+				byte[] dataBuffer = Encoding.ASCII.GetBytes(crc_token);
+				byte[] hashBytes = hmacsha1.ComputeHash(dataBuffer);
+
+				return Convert.ToBase64String(hashBytes);
+			}
+		}
+
 		#endregion
 
 	}

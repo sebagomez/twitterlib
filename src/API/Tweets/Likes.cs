@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Sebagomez.TwitterLib.API.OAuth;
 using Sebagomez.TwitterLib.API.Options;
 using Sebagomez.TwitterLib.Entities;
-using Sebagomez.TwitterLib.Helpers;
 
 namespace Sebagomez.TwitterLib.API.Tweets
 {

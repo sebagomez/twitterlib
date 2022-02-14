@@ -55,5 +55,20 @@ namespace TwitterLibTests
 				Assert.True(false, Util.ExceptionMessage(ex));
 			}
 		}
+
+		[Fact]
+		public async Task GetStatus()
+		{
+			try
+			{
+				Sebagomez.TwitterLib.Entities.Status s = await Timeline.GetStatus(new StatusOptions { User = m_user, Id = "20" });
+				Assert.True(s != null, "No twit!");
+				Assert.True(s.text == "just setting up my twttr", "Wrong twit text!");
+			}
+			catch (Exception ex)
+			{
+				Assert.True(false, Util.ExceptionMessage(ex));
+			}
+		}
 	}
 }

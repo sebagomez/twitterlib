@@ -29,7 +29,9 @@ namespace TwitterLibTests
 
 		public BaseTests()
 		{
-			m_user = LoadTestUser("sebatestapi");
+			//m_user = LoadTestUser("sebatestapi");
+			//m_user = LoadTestUser("sebagomez");
+			m_user = LoadTestUser("isit737MAX");
 		}
 
 		private readonly ITestOutputHelper output;

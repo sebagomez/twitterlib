@@ -66,7 +66,7 @@ namespace Sebagomez.TwitterLib.API.OAuth
 			//OAuthAuthenticator.Current.OnAuthenticationNeeded();
 
 			string url = baseUrl;
-			if (method == HttpMethod.Get)
+			if (method == HttpMethod.Get || options.ForceUrlParams)
 			{
 				url = $"{baseUrl}?{options.GetUrlParameters()}";
 				if (url.EndsWith("?"))
