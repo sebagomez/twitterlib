@@ -12,6 +12,7 @@ namespace Sebagomez.TwitterLib.API.Tweets
 	public class DirectMessages : BaseAPI
 	{
 		const string DM_EVENTS = "https://api.twitter.com/1.1/direct_messages/events/new.json";
+		const string DM_LIST = "https://api.twitter.com/1.1/direct_messages/events/list.json";
 		const string CONTENT_TYPE = "application/json";
 
 		public static async Task<string> SendDM(DMOptions options)
@@ -45,6 +46,15 @@ namespace Sebagomez.TwitterLib.API.Tweets
 				return response.ReasonPhrase;
 
 			return await response.Content.ReadAsStringAsync();
+		}
+
+		public static async Task<EventList> GetDMList(DMListOptions options)
+		{
+			CheckData(options);
+
+			HttpRequestMessage reqMsg = OAuthHelper.GetRequest(HttpMethod.Get, DM_LIST, options);
+
+			return await GetData<EventList>(reqMsg);
 		}
 	}
 }

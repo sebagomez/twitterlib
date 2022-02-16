@@ -1,5 +1,12 @@
-﻿namespace Sebagomez.TwitterLib.Entities
+﻿using System.Collections.Generic;
+
+namespace Sebagomez.TwitterLib.Entities
 {
+    public class EventList
+	{
+        public List<Event> events { get; set; }
+    }
+
     public class DMEvent
     {
         public Event @event { get; set; }
