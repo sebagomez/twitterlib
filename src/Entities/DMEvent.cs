@@ -4,7 +4,8 @@ namespace Sebagomez.TwitterLib.Entities
 {
     public class EventList
 	{
-        public List<Event> events { get; set; }
+		public string next_cursor { get; set; }
+		public List<Event> events { get; set; }
     }
 
     public class DMEvent
