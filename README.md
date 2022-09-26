@@ -4,7 +4,7 @@
 ![](./src/TwitterLib.png?raw=true)
 
 # twitterlib
-TwitterLib is a simple yet powerfull .NET 5 SDK wrapper for the twitter API. It was originally created for [shelltwit](https://github.com/sebagomez/shelltwit) but now you can get it for your own twitter client via [NuGet](https://www.nuget.org/packages/Sebagomez.TwitterLib/).
+TwitterLib is a simple yet powerfull .NET 6 wrapper for the twitter API. It was originally created for [shelltwit](https://github.com/sebagomez/shelltwit) but now you can get it for your own twitter client via [NuGet](https://www.nuget.org/packages/Sebagomez.TwitterLib/).
 
 ## Implemented Twitter APIs
 

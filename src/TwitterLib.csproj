@@ -1,13 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <!--<TargetFramework>netcoreapp3.1</TargetFramework>-->
+    <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>Sebagomez.TwitterLib</AssemblyName>
     <RootNamespace>Sebagomez.TwitterLib</RootNamespace>
     <ApplicationIcon>TwitterLib.ico</ApplicationIcon>
     <Authors>@sebagomez</Authors>
-    <Description>Complete Twitter Library for the .NET platform (.NET 5.0)</Description>
+    <Description>Complete Twitter Library for the .NET platform (.NET 6.0)</Description>
     <Copyright>Copyright 2022 @SebaGomez</Copyright>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/sebagomez/twitterlib</PackageProjectUrl>
@@ -16,10 +15,10 @@
     <PackageIconUrl>https://raw.githubusercontent.com/sebagomez/twitterlib/master/src/TwitterLib.ico</PackageIconUrl>
     <PackageIcon>TwitterLib.png</PackageIcon>
     <RepositoryUrl>https://github.com/sebagomez/twitterlib</RepositoryUrl>
-    <Version>1.5.1</Version>
+    <Version>1.6.0</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReleaseNotes>- Implemented Account Activity API and Direct Messages API</PackageReleaseNotes>
-    <ReleaseVersion>0.5</ReleaseVersion>
+    <ReleaseVersion>0.6</ReleaseVersion>
   </PropertyGroup>
 
   <ItemGroup>
