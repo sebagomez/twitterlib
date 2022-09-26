@@ -6,7 +6,7 @@
     <RootNamespace>Sebagomez.TwitterLib</RootNamespace>
     <ApplicationIcon>TwitterLib.ico</ApplicationIcon>
     <Authors>@sebagomez</Authors>
-    <Description>Complete Twitter Library for the .NET platform (.NET 6.0)</Description>
+    <Description>(pretty)Complete Twitter Library for the .NET platform (.NET 6.0)</Description>
     <Copyright>Copyright 2022 @SebaGomez</Copyright>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/sebagomez/twitterlib</PackageProjectUrl>
@@ -15,9 +15,9 @@
     <PackageIconUrl>https://raw.githubusercontent.com/sebagomez/twitterlib/master/src/TwitterLib.ico</PackageIconUrl>
     <PackageIcon>TwitterLib.png</PackageIcon>
     <RepositoryUrl>https://github.com/sebagomez/twitterlib</RepositoryUrl>
-    <Version>1.6.0</Version>
+    <Version>1.6.1</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageReleaseNotes>- Implemented Account Activity API and Direct Messages API</PackageReleaseNotes>
+    <PackageReleaseNotes>- Now available on .NET 6</PackageReleaseNotes>
     <ReleaseVersion>0.6</ReleaseVersion>
   </PropertyGroup>
 
