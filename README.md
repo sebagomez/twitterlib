@@ -3,6 +3,8 @@
 
 ![](./src/TwitterLib.png?raw=true)
 
+[Just for Fun. No, Really.](https://justforfunnoreally.dev/)
+
 # twitterlib
 TwitterLib is a simple yet powerfull .NET 6 wrapper for the twitter API. It was originally created for [shelltwit](https://github.com/sebagomez/shelltwit) but now you can get it for your own twitter client via [NuGet](https://www.nuget.org/packages/Sebagomez.TwitterLib/).
 
@@ -19,3 +21,4 @@ TwitterLib is a simple yet powerfull .NET 6 wrapper for the twitter API. It was 
 - [Streaming user](https://developer.twitter.com/en/docs/tweets/filter-realtime/guides/basic-stream-parameters)
 - [Account Activity](https://developer.twitter.com/en/docs/twitter-api/enterprise/account-activity-api/overview)
 - [Direct Messages](https://developer.twitter.com/en/docs/twitter-api/v1/direct-messages/sending-and-receiving/overview)
+- [Friendship (follow)](https://developer.twitter.com/en/docs/twitter-api/v1/accounts-and-users/follow-search-get-users/overview)

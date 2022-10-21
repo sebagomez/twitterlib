@@ -15,10 +15,10 @@
     <PackageIconUrl>https://raw.githubusercontent.com/sebagomez/twitterlib/master/src/TwitterLib.ico</PackageIconUrl>
     <PackageIcon>TwitterLib.png</PackageIcon>
     <RepositoryUrl>https://github.com/sebagomez/twitterlib</RepositoryUrl>
-    <Version>1.6.1</Version>
+    <Version>1.7.0</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageReleaseNotes>- Now available on .NET 6</PackageReleaseNotes>
-    <ReleaseVersion>0.6</ReleaseVersion>
+    <PackageReleaseNotes>- Friendship (follow/unfollow) API implemented</PackageReleaseNotes>
+    <ReleaseVersion>0.7</ReleaseVersion>
   </PropertyGroup>
 
   <ItemGroup>
