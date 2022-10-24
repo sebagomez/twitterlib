@@ -50,5 +50,41 @@ namespace TwitterLibTests
 				Assert.True(false, Util.ExceptionMessage(ex));
 			}
 		}
+
+		[Fact]
+		public async Task GetFollowersByName()
+		{
+			try
+			{
+				FollowerListOptions options = new FollowerListOptions { ScreenName = "sebatestapi", User = m_user };
+				Sebagomez.TwitterLib.Entities.FriendList friends = await Frienship.ListFollowers(options);
+				Assert.True(friends.users.Length == 1, "Wrong ammount of followers");
+				Assert.True(friends.next_cursor == 0, "Wrong cursor");
+				Assert.True(friends.previous_cursor == 0, "Wrong prev cursor");
+			}
+			catch (Exception ex)
+			{
+				Assert.True(false, Util.ExceptionMessage(ex));
+			}
+		}
+
+		[Fact]
+		public async Task GetFollowersById()
+		{
+			try
+			{
+				long id = 108356361;
+
+				FollowerListOptions options = new FollowerListOptions { UserId = id, User = m_user };
+				Sebagomez.TwitterLib.Entities.FriendList friends = await Frienship.ListFollowers(options);
+				Assert.True(friends.users.Length == 1, "Wrong ammount of followers");
+				Assert.True(friends.next_cursor == 0, "Wrong cursor");
+				Assert.True(friends.previous_cursor == 0, "Wrong prev cursor");
+			}
+			catch (Exception ex)
+			{
+				Assert.True(false, Util.ExceptionMessage(ex));
+			}
+		}
 	}
 }
