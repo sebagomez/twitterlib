@@ -86,5 +86,43 @@ namespace TwitterLibTests
 				Assert.True(false, Util.ExceptionMessage(ex));
 			}
 		}
+
+		[Fact]
+		public async Task GetFollowersIdByName()
+		{
+			try
+			{
+				FollowerListOptions options = new FollowerListOptions { ScreenName = "sebatestapi", User = m_user };
+				Sebagomez.TwitterLib.Entities.FriendIDsList friends = await Frienship.ListFollowersIDs(options);
+				Assert.True(friends.ids.Length == 1, "Wrong ammount of followers");
+				Assert.True(friends.ids[0] == 1108721422418014211, "Wrong follower");
+				Assert.True(friends.next_cursor == 0, "Wrong cursor");
+				Assert.True(friends.previous_cursor == 0, "Wrong prev cursor");
+			}
+			catch (Exception ex)
+			{
+				Assert.True(false, Util.ExceptionMessage(ex));
+			}
+		}
+
+		[Fact]
+		public async Task GetFollowersIdById()
+		{
+			try
+			{
+				long id = 108356361;
+
+				FollowerListOptions options = new FollowerListOptions { UserId = id, User = m_user };
+				Sebagomez.TwitterLib.Entities.FriendIDsList friends = await Frienship.ListFollowersIDs(options);
+				Assert.True(friends.ids.Length == 1, "Wrong ammount of followers");
+				Assert.True(friends.ids[0] == 1108721422418014211, "Wrong follower");
+				Assert.True(friends.next_cursor == 0, "Wrong cursor");
+				Assert.True(friends.previous_cursor == 0, "Wrong prev cursor");
+			}
+			catch (Exception ex)
+			{
+				Assert.True(false, Util.ExceptionMessage(ex));
+			}
+		}
 	}
 }

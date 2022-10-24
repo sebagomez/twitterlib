@@ -41,5 +41,14 @@ namespace Sebagomez.TwitterLib.API.Tweets
 
 			return await GetData<FriendList>(reqMsg);
 		}
+
+		public static async Task<FriendIDsList> ListFollowersIDs(FollowerListOptions options)
+		{
+			CheckData(options);
+
+			HttpRequestMessage reqMsg = OAuthHelper.GetRequest(HttpMethod.Get, FRIENDS_IDS, options);
+
+			return await GetData<FriendIDsList>(reqMsg);
+		}
 	}
 }
