@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <AssemblyName>Sebagomez.TwitterLib</AssemblyName>
     <RootNamespace>Sebagomez.TwitterLib</RootNamespace>
     <ApplicationIcon>TwitterLib.ico</ApplicationIcon>
     <Authors>@sebagomez</Authors>
-    <Description>(pretty)Complete Twitter Library for the .NET platform (.NET 6.0)</Description>
+    <Description>(pretty)Complete Twitter Library for the .NET platform</Description>
     <Copyright>Copyright 2022 @SebaGomez</Copyright>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/sebagomez/twitterlib</PackageProjectUrl>
@@ -15,10 +15,10 @@
     <PackageIconUrl>https://raw.githubusercontent.com/sebagomez/twitterlib/master/src/TwitterLib.ico</PackageIconUrl>
     <PackageIcon>TwitterLib.png</PackageIcon>
     <RepositoryUrl>https://github.com/sebagomez/twitterlib</RepositoryUrl>
-    <Version>1.7.1</Version>
+    <Version>1.7.2</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageReleaseNotes>- Get fiends (followers) and get frinds ids implemented</PackageReleaseNotes>
-    <ReleaseVersion>0.7</ReleaseVersion>
+    <PackageReleaseNotes>- Upgrade to .NET 7</PackageReleaseNotes>
+    <ReleaseVersion>0.8</ReleaseVersion>
   </PropertyGroup>
 
   <ItemGroup>
