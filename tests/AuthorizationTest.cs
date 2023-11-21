@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Sebagomez.TwitterLib.API.OAuth;
 using Sebagomez.TwitterLib.Helpers;
 using Xunit;
@@ -8,17 +9,17 @@ namespace TwitterLibTests
 	public class AuthorizationTest : BaseTests
 	{
 		[Fact]
-		public void GetOAuthToken()
+		public async Task GetOAuthToken()
 		{
 			try
 			{
-				string token = OAuthAuthenticator.GetOAuthToken(m_user.AppSettings.AppKey, m_user.AppSettings.AppSecret).Result;
+				string token = await OAuthAuthenticator.GetOAuthToken(m_user.AppSettings.AppKey, m_user.AppSettings.AppSecret);
 
 				Assert.True(token.Length == 27, "OK");
 			}
 			catch (Exception ex)
 			{
-				Assert.True(false, Util.ExceptionMessage(ex));
+				Assert.Fail(Util.ExceptionMessage(ex));
 			}
 		}
 
@@ -37,7 +38,7 @@ namespace TwitterLibTests
 			}
 			catch (Exception ex)
 			{
-				Assert.True(false, Util.ExceptionMessage(ex));
+				Assert.Fail(Util.ExceptionMessage(ex));
 			}
 		}
 	}

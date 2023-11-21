@@ -22,7 +22,7 @@ namespace TwitterLibTests
 			}
 			catch (Exception ex)
 			{
-				Assert.True(false, Util.ExceptionMessage(ex));
+				Assert.Fail(Util.ExceptionMessage(ex));
 			}
 		}
 	}

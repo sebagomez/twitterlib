@@ -1,13 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <AssemblyName>Sebagomez.TwitterLib</AssemblyName>
     <RootNamespace>Sebagomez.TwitterLib</RootNamespace>
     <ApplicationIcon>TwitterLib.ico</ApplicationIcon>
     <Authors>@sebagomez</Authors>
     <Description>(pretty)Complete Twitter Library for the .NET platform</Description>
-    <Copyright>Copyright 2022 @SebaGomez</Copyright>
+    <Copyright>Copyright 2023 @SebaGomez</Copyright>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/sebagomez/twitterlib</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
@@ -15,10 +15,10 @@
     <PackageIconUrl>https://raw.githubusercontent.com/sebagomez/twitterlib/master/src/TwitterLib.ico</PackageIconUrl>
     <PackageIcon>TwitterLib.png</PackageIcon>
     <RepositoryUrl>https://github.com/sebagomez/twitterlib</RepositoryUrl>
-    <Version>1.7.2</Version>
+    <Version>1.7.3</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageReleaseNotes>- Upgrade to .NET 7</PackageReleaseNotes>
-    <ReleaseVersion>0.8</ReleaseVersion>
+    <PackageReleaseNotes>- Upgrade to .NET 8</PackageReleaseNotes>
+    <ReleaseVersion>0.9</ReleaseVersion>
   </PropertyGroup>
 
   <ItemGroup>
